@@ -8,12 +8,12 @@ public class MainClass {
 		boolean exit = false;
 		while (!exit) {
 			
-			System.out.println("1 > пересечение графов");
-			System.out.println("2 > минимальная полустепень захода");
-			System.out.println("3 > случайная матрица INT");
-			System.out.println("4 > случайная матрица BOOLEAN");
-			System.out.println("5 > выход");
-			System.out.println(">> ");
+			System.out.println("1 > Пересечение графов");
+			System.out.println("2 > Минимальная полустепень захода");
+			System.out.println("3 > Случайная матрица INT");
+			System.out.println("4 > Случайная матрица BOOLEAN");
+			System.out.println("5 > Выход");
+			System.out.print(">> ");
 			
 			Scanner in = new Scanner(System.in);			
 			int num = 0;
@@ -23,28 +23,23 @@ public class MainClass {
 			 switch(num) {     
 	        	case 1:
 	        		
-	        		boolean A[][] = {{true, false, false}, {false, true, false}, {true, true, false}};
-	        		boolean B[][] = {{false, false, false}, {true, false, false}, {false, false, true}};
-	        		
+	        		boolean A[][] = RandomMatrix.createBOOLEAN(3);
+	        		boolean B[][] = RandomMatrix.createBOOLEAN(3);	        		
 	        		boolean C[][] = IntersectionOfGraphs.run(A, B);
 	        		
-	        		for (int i = 0; i < A.length; i ++) {
-	        			for (int j = 0; j < A.length; j++) {
-	        				System.out.print(C[i][j]);	        				
-	        				if (j < A.length - 1) System.out.print(" ");	        				
-	        			}
-	        			
-	        			if (i < A.length - 1) System.out.print("\n");	        			
-	        		}
+	        		System.out.println("A >"); printMatrixBOOLEAN(A); System.out.println("\n"); 
+	        		System.out.println("B >"); printMatrixBOOLEAN(B); System.out.println("\n");
+	        		System.out.println("РЕЗУЛЬТАТ >"); printMatrixBOOLEAN(C); System.out.println();
 	        		
 	        		break;
 	        		
 	        	case 2:
 	        		
-	        		int D[][] = {{1, 5, 2}, {1, 5, 2}, {1, 5, 2}};
+	        		int D[][] = RandomMatrix.createINT(3);
+	        		System.out.println("МАТРИЦА >"); printMatrixINT(D); System.out.println("\n");
 	        		
-	        		int E[] = Vertex.run(D);
-	        		
+	        		System.out.println("ПОЛУСТЕПЕНИ ИСХОДА >"); 
+	        		int E[] = Vertex.run(D);	        		
 	        		for (int i = 0; i < D.length; i ++) {
 	        			System.out.print(E[i]);	        			
 	        			if (i < D.length - 1) System.out.print(" ");	        			
@@ -55,30 +50,14 @@ public class MainClass {
 	        	case 3 :
 	        		
 	        		int F[][] = RandomMatrix.createINT(10);
-	        		
-	        		for (int i = 0; i < F.length; i ++) {
-	        			for (int j = 0; j < F.length; j++) {
-	        				System.out.print(F[i][j]);	        				
-	        				if (j < F.length - 1) System.out.print(" ");	        				
-	        			}
-	        			
-	        			if (i < F.length - 1) System.out.print("\n");	        			
-	        		}
+	        		printMatrixINT(F);
 	        		
 	        		break;
 	        	
 	        	case 4:
 	        		
 	        		boolean G[][] = RandomMatrix.createBOOLEAN(10);
-	        		
-	        		for (int i = 0; i < G.length; i ++) {
-	        			for (int j = 0; j < G.length; j++) {
-	        				System.out.print(G[i][j]);	        				
-	        				if (j < G.length - 1) System.out.print(" ");	        				
-	        			}
-	        			
-	        			if (i < G.length - 1) System.out.print("\n");	        			
-	        		}
+	        		printMatrixBOOLEAN(G);
 	        		
 	        		break;
 	        		
@@ -92,6 +71,28 @@ public class MainClass {
 		}
 		
 		
+	}
+	
+	private static void printMatrixINT(int A[][]) {		
+		for (int i = 0; i < A.length; i ++) {
+			for (int j = 0; j < A.length; j++) {
+				System.out.print(A[i][j]);	        				
+				if (j < A.length - 1) System.out.print(" ");	        				
+			}
+			
+			if (i < A.length - 1) System.out.print("\n");	        			
+		}		
+	}
+	
+	private static void printMatrixBOOLEAN(boolean A[][]) {		
+		for (int i = 0; i < A.length; i ++) {
+			for (int j = 0; j < A.length; j++) {
+				System.out.print(A[i][j]);	        				
+				if (j < A.length - 1) System.out.print(" ");	        				
+			}
+			
+			if (i < A.length - 1) System.out.print("\n");	        			
+		}		
 	}
 	
 	
