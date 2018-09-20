@@ -2,12 +2,16 @@
 
 public class Vertex {
 	
-	public static int run() {
+	public static int[] run(int A[][]) {
 		
-		int res = 0;
+		int B[] = new int[A.length];
+		for (int i : B) i = 0;
 		
-		
-		return res;		
+		for (int i = 0; i < A.length; i++)
+			for (int j = 0; j < A.length; j++) 
+				B[i] += A[j][i];
+			
+		return B;		
 		
 	}
 	
