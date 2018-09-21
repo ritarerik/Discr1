@@ -63,17 +63,16 @@ public class MainClass {
 	        		
 	        		int E[] = Vertex.run(D);
 	        		System.out.println(">> ÏÎËÓÑÒÅÏÅÍÈ ÇÀÕÎÄÀ >\n");
-	        		System.out.print("    ");	        			        		
 	        		for (int i = 0; i < D.length; i ++) {
-	        			System.out.print("x(" + i + ") = " + E[i]);	        			
-	        			if (i < D.length - 1) System.out.print(", ");	        			
+	        			System.out.println("   x(" + i + ") = " + E[i]);	        			
+//	        			if (i < D.length - 1) System.out.print(", ");	        			
 	        		}
 	        		
 	        		System.out.println("\n");
 	        		
 	        		int minIndex = getMinIndex(E);
 	        		System.out.println(">> ÌÈÍÈÌÀËÜÍÀß ÏÎËÓÑÒÅÏÅÍÜ >\n");
-	        		System.out.println("  >> x(" + minIndex + ") = " + E[minIndex]);
+	        		System.out.println("   >> x(" + minIndex + ") = " + E[minIndex]);
 	        		
 	        		break;
 	        		
@@ -103,16 +102,24 @@ public class MainClass {
 		
 	}
 	
-	private static void printMatrixINT(int A[][]) {		
+	private static void printMatrixINT(int A[][]) {	  	
 		
-		System.out.print("         |");
+		System.out.print("        |");
 		for (int i = 0; i < A.length; i++) {
 			System.out.print("(" + i + ") ");
 		}
 		System.out.println();
 		
+		
+		System.out.print("        |———");
+		for (int i = 0; i < A.length - 1; i++) {
+			System.out.print("————");
+		}
+		System.out.println();
+		
+		
 		for (int i = 0; i < A.length; i ++) {
-			System.out.print("    x(" + i + ") |");
+			System.out.print("   x(" + i + ") |");
 			for (int j = 0; j < A.length; j++) {
 				System.out.print(" " + A[i][j] + " ");	        				
 				if (j < A.length - 1) System.out.print(" ");	        				
@@ -123,14 +130,20 @@ public class MainClass {
 	
 	private static void printMatrixBOOLEAN(boolean A[][]) {
 		
-		System.out.print("         |");
+		System.out.print("        |");
 		for (int i = 0; i < A.length; i++) {
 			System.out.print("(" + i + ") ");
 		}
 		System.out.println();
+		
+		System.out.print("        |———");
+		for (int i = 0; i < A.length - 1; i++) {
+			System.out.print("————");
+		}
+		System.out.println();
 
 		for (int i = 0; i < A.length; i ++) {
-			System.out.print("    x(" + i + ") |");
+			System.out.print("   x(" + i + ") |");
 			for (int j = 0; j < A.length; j++) {				
 				if (A[i][j] == true) System.out.print(" " + 1 + " ");
 					else System.out.print(" " + 0 + " ");
