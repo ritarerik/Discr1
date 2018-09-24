@@ -9,94 +9,50 @@ public class MainClass {
 		boolean exit = false;
 		while (!exit) {
 			
-			System.out.println("> Ïåðåñå÷åíèå ãðàôîâ 			>> 1");
-			System.out.println("> Ìèíèìàëüíàÿ ïîëóñòåïåíü çàõîäà 	>> 2");
-			System.out.println("> Ñëó÷àéíàÿ ìàòðèöà INT 		>> 3");
-			System.out.println("> Ñëó÷àéíàÿ ìàòðèöà BOOLEAN 		>> 4");
-			System.out.println("> Âûõîä 				>> Äðóãîå");
-			System.out.print("\n  >> ");
-			
-			Scanner in = new Scanner(System.in);			
-			int num = 0;
-			String res = "";
-			try { 
-				num = in.nextInt(); 
-			} catch (Exception e) { 
-				System.out.println("\n> Íåâåðíûé ââîä, ïîæàëóéñòà, ââåäèòå ÷èñëî\n"); 
-				continue; 
-			}
-			
-			System.out.println("\n> Ðàçìåðíîñòü ìàòðèöû (5;10)");
+			System.out.println("> Ðàçìåðíîñòü ìàòðèöû (5;10)");
+			System.out.println("> Âûõîä >> 0");
 			System.out.print("\n  >> ");
 			
 			int size = 0;
+			Scanner in = new Scanner(System.in);
 			
 			try { 
 				size = in.nextInt(); 
 				
-				if (size < 5 || size > 10) throw new Exception();
+				if (size == 0) exit = true;
+				else if (size < 5 || size > 10) throw new Exception();
 				
 			} catch (Exception e) { 
 				System.out.println("\n> Íåâåðíûé ââîä, ïîæàëóéñòà, ââåäèòå ÷èñëî (5;10)\n"); 
 				continue; 
 			}
-
-			System.out.println();
 			
-			 switch(num) {     
-	        	case 1:
-	        		
-	        		boolean A[][] = RandomMatrix.createBOOLEAN(size); 	delay(10);
-	        		boolean B[][] = RandomMatrix.createBOOLEAN(size); 	delay(10);        		
-	        		boolean C[][] = IntersectionOfGraphs.run(A, B);		delay(10);
-	        		
-	        		System.out.println(">> A >\n"); 		printMatrixBOOLEAN(A); System.out.println("\n"); 
-	        		System.out.println(">> B >\n"); 		printMatrixBOOLEAN(B); System.out.println("\n");
-	        		System.out.println(">> ÐÅÇÓËÜÒÀÒ >\n"); printMatrixBOOLEAN(C); System.out.println();
-	        		
-	        		break;
-	        		
-	        	case 2:
-	        		
-	        		int D[][] = RandomMatrix.createINT(size);
-	        		System.out.println(">> ÌÀÒÐÈÖÀ >\n"); printMatrixINT(D); System.out.println("\n");
-	        		
-	        		int E[] = Vertex.run(D);
-	        		System.out.println(">> ÏÎËÓÑÒÅÏÅÍÈ ÇÀÕÎÄÀ >\n");
-	        		for (int i = 0; i < D.length; i ++) {
-	        			System.out.println("   x(" + i + ") = " + E[i]);	        			
-//	        			if (i < D.length - 1) System.out.print(", ");	        			
-	        		}
-	        		
-	        		System.out.println("\n");
-	        		
-	        		int minIndex = getMinIndex(E);
-	        		System.out.println(">> ÌÈÍÈÌÀËÜÍÀß ÏÎËÓÑÒÅÏÅÍÜ >\n");
-	        		System.out.println("   >> x(" + minIndex + ") = " + E[minIndex]);
-	        		
-	        		break;
-	        		
-	        	case 3 :
-	        		
-	        		int F[][] = RandomMatrix.createINT(size);
-	        		printMatrixINT(F); System.out.println();
-	        		
-	        		break;
-	        	
-	        	case 4:
-	        		
-	        		boolean G[][] = RandomMatrix.createBOOLEAN(size);
-	        		printMatrixBOOLEAN(G); System.out.println();
-	        		
-	        		break;
-	        		
-	        	default:
-	        		exit = true;
-	        		
-			 }
-			 
-			 System.out.println("\n");			
-			
+			if (!exit) {			
+				System.out.println();
+				
+		        boolean A[][] = RandomMatrix.createBOOLEAN(size); 	delay(10);
+		        boolean B[][] = RandomMatrix.createBOOLEAN(size); 	delay(10);        		
+		        boolean C[][] = IntersectionOfGraphs.run(A, B);		delay(10);
+		        		
+		        System.out.println(">> A >\n"); 		printMatrixBOOLEAN(A); System.out.println("\n"); 
+		        System.out.println(">> B >\n"); 		printMatrixBOOLEAN(B); System.out.println("\n");
+		        System.out.println(">> ÐÅÇÓËÜÒÀÒ >\n"); printMatrixBOOLEAN(C); System.out.println("\n");
+		        	        
+		        int D[] = Vertex.run(booleanMatrixToInt(C));
+		        
+		        System.out.println(">> ÏÎËÓÑÒÅÏÅÍÈ ÇÀÕÎÄÀ >\n");
+		        for (int i = 0; i < C.length; i ++) {
+		        	System.out.println("   x(" + i + ") = " + D[i]);        			
+		        }
+		        		
+		        System.out.println("\n");
+		        		
+		        int minIndex = getMinIndex(D);
+		        System.out.println(">> ÌÈÍÈÌÀËÜÍÀß ÏÎËÓÑÒÅÏÅÍÜ >\n");
+		        System.out.println("   >> x(" + minIndex + ") = " + D[minIndex]);
+	
+				System.out.println("\n");			
+			}
 		}
 		
 		
@@ -175,5 +131,19 @@ public class MainClass {
 			e.printStackTrace();
 		}
 	}
+	
+	private static int[][] booleanMatrixToInt(boolean A[][]) {
+		
+		int B[][] = new int[A.length][A.length];
+		
+		for (int i = 0; i < A.length; i++) 
+			for (int j = 0; j < A.length; j++) 
+				if (A[i][j]) B[i][j] = 1;
+				else B[i][j] = 0;
+		
+		return B;
+		
+	}
+	
 	
 }
