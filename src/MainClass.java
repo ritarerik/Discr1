@@ -7,23 +7,21 @@ public class MainClass {
 	{
 		
 		boolean exit = false;
+		Scanner in = new Scanner(System.in);
+		
 		while (!exit) {
 			
 			System.out.println("> Размерность матрицы (5;10)");
 			System.out.println("> Выход >> 0");
 			System.out.print("\n  >> ");
 			
-			int size = 0;
-			Scanner in = new Scanner(System.in);
+			int size = 0;			
 			
 			try { 
 				size = in.nextInt(); 
 				
 				if (size == 0) exit = true;
-				else if (size < 5 || size > 10) {
-					in.close();
-					throw new Exception();
-				}
+				else if (size < 5 || size > 10) throw new Exception();
 				
 			} catch (Exception e) { 
 				System.out.println("\n> Неверный ввод, пожалуйста, введите число (5;10)\n");
@@ -55,13 +53,10 @@ public class MainClass {
 		        System.out.println("   >> x(" + minIndex + ") = " + D[minIndex]);
 	
 				System.out.println("\n");			
-			} else {
-				in.close();
-			}
+			} 
 		}
 		
-		
-		
+		in.close();	
 		
 	}
 	
