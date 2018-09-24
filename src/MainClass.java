@@ -20,10 +20,13 @@ public class MainClass {
 				size = in.nextInt(); 
 				
 				if (size == 0) exit = true;
-				else if (size < 5 || size > 10) throw new Exception();
+				else if (size < 5 || size > 10) {
+					in.close();
+					throw new Exception();
+				}
 				
 			} catch (Exception e) { 
-				System.out.println("\n> Неверный ввод, пожалуйста, введите число (5;10)\n"); 
+				System.out.println("\n> Неверный ввод, пожалуйста, введите число (5;10)\n");
 				continue; 
 			}
 			
@@ -52,8 +55,12 @@ public class MainClass {
 		        System.out.println("   >> x(" + minIndex + ") = " + D[minIndex]);
 	
 				System.out.println("\n");			
+			} else {
+				in.close();
 			}
 		}
+		
+		
 		
 		
 	}
